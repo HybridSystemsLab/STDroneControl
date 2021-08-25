@@ -11,7 +11,7 @@ We use the Uniting Control strategy to hover the ST drone at some desired altitu
 
 ## File Descriptions
 - **lpf_2_init.m**: Helper function to initialize the low pass filter and returnt he parameter as a struct.
-- **lpf_2.m**: Helper fucntion to perform low pass filtering on sampled data.
+- **lpf_2.m**: Helper function to perform low pass filtering on sampled data.
 - **GetDronePosition.m**: Helper function to get the position and orientation of the rigid body defined in Motive, software used to localize the rigid body using the Optitrack motion capture system data.
 - **DroneDataCollector.m**: Main file to validate the working of collecting data of the rigid body and filtering it using the low pass filter.
 - **Xpid_error_init.m, Ypid_error_init.m, Zpid_error_init.m**: These files are used to initialize the X, Y, and Z PID controller errors respectively. 
