@@ -5,7 +5,7 @@ Using the quarotor model derived in Chapter 3 of the paper, we design two sets o
 - Bluetooth Recevier/Transmitter
 - MATLAB 2019 or above
 
-## HOW TO RUN
+## How to Run the Code
 The project is divided into two parts:
 - Simulation (Look at the README in Simulation folder)
 - Experiment (Look at the README in Experiment folder)
