@@ -41,7 +41,7 @@ We simulate each designed PID controller and then embed them in the MPC Switchin
 - Run the code.
 - Two Figures should show up. The first is a 3D plot showing the tracking of the trajectory adn second is a subplot showing the errors in X, Y, and Z.
 
-###### Testing trajectory tracking
+###### Running MPC Swithcing Logic Framework
 - Open the **main_CL.m** file.
 - In **main_CL.m**, lines 48 is the swithcing hysteresis parameter, line 49-50 are the parameters for the MPC framework, namely the PRediction horizon and Control Horizon.
 - You can alter the cost weights by opening the **EvaluateCost.m** file.
