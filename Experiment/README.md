@@ -27,7 +27,7 @@ We use the Uniting Control strategy to hover the ST drone at some desired altitu
 ###### Steps for ST Drone
 - Place reflective markers on the ST Drone.
 - Connect the battery to the ST Drone.
-- Place the ST Drone on a flat surface adn press the reset button.
+- Place the ST Drone on a flat surface and press the reset button.
 
 ###### Steps for Motion Capture System
 - Open Motive
