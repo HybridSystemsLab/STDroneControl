@@ -4,6 +4,10 @@ Using the quarotor model derived in Chapter 3 of the paper, we design two sets o
 ## Requirements
 - Bluetooth Recevier/Transmitter
 - MATLAB 2019 or above
+- ST Drone Kit
+- Reflective markers
+- Motion capture system SDK
+- Motive
 
 ## How to Run the Code
 The project is divided into two parts:
