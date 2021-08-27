@@ -67,14 +67,12 @@ zz_ref = zeros(ITERATIONS + 1, 1);
 PHI = zeros(ITERATIONS + 1, 1);
 THETA = zeros(ITERATIONS + 1, 1);
 
-q_s = zeros(ITERATIONS,1);
-
 %% Frequencies
 OUT_FREQ = 60;
 CUT_OFF_FREQ_POS = 10;
 CUT_OFF_FREQ_VEL = 10;
 
-%% Params of the drone
+%% Mass of the drone
 m = 86.55/1000; % 86.55g
 MAX_ANGLE = 30; % 30 deg
 
@@ -128,9 +126,17 @@ for i = 1:100
 end
 
 %% Keep track of previous position for computing velocity.
+% prev_xx = DronePos(2);
+% prev_yy = DronePos(3);
+% prev_zz = DronePos(4);
+dt = 1/600;
+des = generate_traj(1, 80, dt);
 
+p_z_ref = 0;
+q_s = zeros(ITERATIONS,1);
 k = 1;
 p_z_ref = z_ref;
+prev_z_ref = 0.0;
 
 while(k <= ITERATIONS)
     %     k_bar = k - 1;
@@ -159,8 +165,10 @@ while(k <= ITERATIONS)
     
     if(k <= 650)
         z_ref = 0.8;  %z_ref + 1/OUT_FREQ*5;
+        prev_z_ref = 0.0;
     elseif (k <= 1300)
         z_ref = 1.6;
+        prev_z_ref = 0.8;
     else
         z_ref = z_ref - 1/OUT_FREQ*0.25;
     end
@@ -210,13 +218,13 @@ while(k <= ITERATIONS)
     
     % Call the Z Controller and retrive teh thrust value
     if k<1300
-        if z_f<0.6*z_ref && switch_q == 0
+        if (z_f - prev_z_ref) < 0.6*(z_ref-prev_z_ref) && switch_q == 0
             q_s(k) = 0;
             [T, out_z, Z_pid] = Zcont(Z_pid, z_ref, z_f, vz_f, vz_ref(k), 1/OUT_FREQ);
             %         if k>1 && q_s(k-1)~=q_s(k)
             %             Z_pid.z_cumm_error
             %         end
-        elseif z_f>0.4*z_ref
+        elseif (z_f - prev_z_ref) > 0.4*(z_ref-prev_z_ref)
             q_s(k) = 1;
             switch_q = 1;
             %         if k>1 && q_s(k-1)~=q_s(k)
